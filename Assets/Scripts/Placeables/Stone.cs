@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Stone : Placeable {
+public class Stone : Resource {
     public Stone(Vector3Int position) {
         this.position = position;
         type = TileType.STONE;

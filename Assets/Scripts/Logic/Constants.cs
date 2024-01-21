@@ -25,6 +25,7 @@ public enum TileType
     BUSH,
     STONE,
     LUMBER_HOUSE ,
+    STONE_HOUSE,
     PATH ,
     TOWNHALL ,
     ALL,

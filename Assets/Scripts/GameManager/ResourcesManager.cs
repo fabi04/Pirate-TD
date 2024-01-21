@@ -71,6 +71,19 @@ public class ResourcesManager : MonoBehaviour
     /// <summary>
     /// Deducts the resources and their costs from the player's amount,
     /// </summary>
+    /// <param name="resources">The resource types the costs map to</param>
+    /// <param name="cost">The amounts of each resource</param>
+    public void DeductResources(Resources resources, int cost) {
+        Dictionary<Resources, int> combined = new Dictionary<Resources, int>
+        {
+            { resources, cost }
+        };
+        DeductResources(combined);
+    }
+
+    /// <summary>
+    /// Deducts the resources and their costs from the player's amount,
+    /// </summary>
     /// <param name="amount">The Dictionary containing the resource and amount pairs</param>
     public void DeductResources(Dictionary<Resources, int> amount) {
         foreach (KeyValuePair<Resources, int> resource in amount) {
@@ -78,6 +91,28 @@ public class ResourcesManager : MonoBehaviour
                 resources[resource.Key] -= resource.Value;
             }
         }
+    }
+
+    /// <summary>
+    /// Adds the given amount to the resources.
+    /// </summary>
+    /// <param name="resource">The resource to update</param>
+    /// <param name="amount">The amount to add</param>
+    public void AddResources(Resources resource, int amount) {
+        resources[resource] += amount;
+        int capacity = GetCapacityForResource(resource);
+        if (resources[resource] > capacity) {
+            resources[resource] = capacity;
+        }
+    }
+
+    public int GetCapacityForResource(Resources resource) {
+        switch (resource) {
+            case Resources.STONE: return stoneCapacity;
+            case Resources.WOOD: return woodCapacity;
+            case Resources.POPULATION: return populationCapacity;
+        }
+        return 0;
     }
 
     private void Update()

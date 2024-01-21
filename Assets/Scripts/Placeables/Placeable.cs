@@ -1,9 +1,4 @@
-using Extensions;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public abstract class Placeable {
     public Vector3Int position {get; protected set;}
@@ -20,6 +15,8 @@ public abstract class Placeable {
                 return new Stone(position);
             case TileType.TREE:
                 return new Tree(position);
+            case TileType.STONE_HOUSE:
+                return new StoneHouse(position);
         }
         return new Stone(position);
    }

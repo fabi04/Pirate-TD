@@ -34,31 +34,12 @@ public class SelectionPanelManager : MonoBehaviour
                 curr = stonePanel;
                 break;
             }
+            case TileType.STONE_HOUSE:
             case TileType.LUMBER_HOUSE:
             {
                 curr = lumberPanel;
                 break;
             }
-            //case House:
-            //{
-            //    curr = housePanel;
-            //    break;
-            //}
-            //case Lumber:
-            //{
-            //    curr = lumberPanel;
-            //    break;
-            //}
-            //case StoneHouse:
-            //{
-            //    curr = stonePanel;
-            //    break;
-            //}
-            //case Townhall:
-            //{
-            //    curr = townhallPanel;
-            //    break;
-            //}
             default:
             {
                 return;
@@ -71,6 +52,7 @@ public class SelectionPanelManager : MonoBehaviour
     {
         if(curr != null)
         {
+            curr.SetActive(true);
             Animator animator = curr.GetComponent<Animator>();
             if(animator != null)
             {
