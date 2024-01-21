@@ -44,12 +44,13 @@ public class ClickManager : MonoBehaviour
     }
     
     /// <summary>
-    /// Selects the tile, if any, at the given postion.
+    /// Selects the tile, if any, at the given position.
     /// </summary>
     /// <param name="position">The position of the tile to select</param>
     public void Select(Vector3Int position) {
+        Deselect();
         currentSelect = (position, tilemapManager.GetPlaceableInTopLayer(position));
-        selectionPanelManager.ToggleSelectionPanel(true, tilemapManager.GetTileType(position));
+        selectionPanelManager.ToggleSelectionPanel(true, currentSelect.Value.Item2.type);
         tilemapManager.SelectTileWithRange(position);
     }
 

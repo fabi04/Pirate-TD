@@ -17,6 +17,7 @@ public class BuildingPlacer : MonoBehaviour
     private Placeable placeable;
     private TilemapManager tilemapManager;
     private MoveHandler moveHandler;
+    private Tile toBePlacedTile;
     bool placing;
     bool isValidPos;
     bool moving;
@@ -45,13 +46,13 @@ public class BuildingPlacer : MonoBehaviour
         renderBuilding();
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && placing ) {
             if (isValidPos) {
-                tilemapManager.AddTile(gridCoords, item.tile, item.type);
-                //tilemapManager.DeselectTileWithRange();
+                tilemapManager.AddTile(gridCoords, toBePlacedTile, placeable.type);
                 preview.SetActive(false);
                 GetComponent<ClickManager>().Select(gridCoords);
                 GetComponent<ResourcesManager>().DeductResources(item.resources, item.cost);
                 isValidPos = false;
                 placing = false;
+                moving = false;
             }
         }
     }
@@ -61,6 +62,7 @@ public class BuildingPlacer : MonoBehaviour
     {
         placing = true;
         this.item = item;
+        toBePlacedTile = item.tile;
         preview.SetActive(true);
         preview.GetComponent<SpriteRenderer>().sprite = item.previewImage;
     }
@@ -71,10 +73,12 @@ public class BuildingPlacer : MonoBehaviour
     public void MoveBuilding(Vector3Int position) {
         placeable = tilemapManager.GetPlaceableInTopLayer(position);
         Tile tile = tilemapManager.GetTileInTopLayer(position);
+        toBePlacedTile = tile;
         tilemapManager.RemoveTile(position);
         preview.GetComponent<SpriteRenderer>().sprite = tile.sprite;
         preview.SetActive(true);
         placing = true;
+        moving = true;
     }
 
     private void renderBuilding()

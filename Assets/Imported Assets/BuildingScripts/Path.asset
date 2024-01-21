@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Extends your path so you can place more buildings.
   previewImage: {fileID: 1530952451, guid: 51dad5206bc904fd7bb9a65dca1a3b7f, type: 3}
   tile: {fileID: 11400000, guid: d53db791c774949d3bffe63d0c78422f, type: 2}
-  type: 6
+  type: 7
   hitpoints: 100
   resources: 01000000
   cost: 05000000

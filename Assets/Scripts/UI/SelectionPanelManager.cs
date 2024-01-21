@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class SelectionPanelManager : MonoBehaviour
 {
     [SerializeField] GameObject housePanel;
     [SerializeField] GameObject stonePanel;
-    [SerializeField] GameObject lumberPanel;
+    [SerializeField] GameObject resourceBuildingPanel;
     [SerializeField] GameObject woodPanel;
 
     [SerializeField] GameObject townhallPanel;
@@ -37,7 +39,8 @@ public class SelectionPanelManager : MonoBehaviour
             case TileType.STONE_HOUSE:
             case TileType.LUMBER_HOUSE:
             {
-                curr = lumberPanel;
+                curr = resourceBuildingPanel;
+                resourceBuildingPanel.GetComponentInChildren<TMP_Text>().text = type.ToString();
                 break;
             }
             default:
