@@ -168,6 +168,9 @@ public class TilemapManager : MonoBehaviour
         if (selectedRange.Count > 0) {
             foreach(KeyValuePair<Vector3Int, bool> pos in selectedRange) {
                 rangeSelectionLayer.SetTile(pos.Key, null);
+                if (tiles.ContainsKey(pos.Key)) {
+                    DeselectTile(pos.Key);
+                }
             }
         }
         selectedRange.Clear();
@@ -202,6 +205,8 @@ public class TilemapManager : MonoBehaviour
                 if (GetTileInBottomLayer(pos)) {
                     rangeSelectionLayer.SetTile(pos, selectedTile);
                     rangeSelectionLayer.SetColor(pos, new Color(1f, 1f, 1f, 0.5f));
+                    topLayer.SetTileFlags(pos, TileFlags.None);
+                    topLayer.SetColor(pos, new Color(1f, 1f, 1f, 0.75f));
                     selectedRange.Add(pos, true);
                 }
             }
