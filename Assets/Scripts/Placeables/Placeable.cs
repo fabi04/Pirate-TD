@@ -1,6 +1,7 @@
 using Extensions;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,15 +12,14 @@ public abstract class Placeable {
 
    public static Placeable CreatePlaceableFromType(TileType type, Vector3Int position) {
         switch(type) {
-            case TileType.LUMBER_HOUSE: {
+            case TileType.LUMBER_HOUSE:
                 return new LumberHouse(position);
-            }
-            case TileType.PATH: {
+            case TileType.PATH: 
                 return new Path(position);
-            }
-            case TileType.STONE: {
+            case TileType.STONE: 
                 return new Stone(position);
-            }
+            case TileType.TREE:
+                return new Tree(position);
         }
         return new Stone(position);
    }

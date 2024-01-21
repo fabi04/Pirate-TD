@@ -21,6 +21,7 @@ public class SelectionPanelManager : MonoBehaviour
     /// <param name="type">The corresponding tile's type</param>
     public void ToggleSelectionPanel(bool state, TileType type)
     {
+        Debug.Log(type);
         switch(type)
         {
             case TileType.TREE:
