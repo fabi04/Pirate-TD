@@ -29,12 +29,20 @@ public class ClickManager : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Selects the tile, if any, at the given postion.
+    /// </summary>
+    /// <param name="position">The position of the tile to select</param>
     public void Select(Vector3Int position) {
         currentSelect = position;
         selectionPanelManager.ToggleSelectionPanel(true, tilemapManager.GetTileType(position));
         tilemapManager.SelectTileWithRange(position);
     }
 
+    /// <summary>
+    /// Deselects the currently selected tile, if any.
+    /// </summary>
     public void Deselect() {
         if (currentSelect != null) {
             tilemapManager.DeselectTileWithRange(currentSelect.Value);
