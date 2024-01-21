@@ -19,6 +19,7 @@ public class BuildingPlacer : MonoBehaviour
     private MoveHandler moveHandler;
     bool placing;
     bool isValidPos;
+    bool moving;
 
     Vector3Int gridCoords;
 
@@ -38,7 +39,9 @@ public class BuildingPlacer : MonoBehaviour
     {
         if(!placing) return;
         isValidPos = tilemapManager.IsTileAvailable(new Vector2Int(gridCoords.x, gridCoords.y)) && tilemapManager.HasPathAsNeighbour(gridCoords);
-        placeable = Placeable.CreatePlaceableFromType(item.type, new Vector3Int(0, 0, 0));
+        if (!moving) {
+            placeable = Placeable.CreatePlaceableFromType(item.type, new Vector3Int(0, 0, 0));
+        }
         renderBuilding();
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && placing ) {
             if (isValidPos) {
@@ -60,6 +63,18 @@ public class BuildingPlacer : MonoBehaviour
         this.item = item;
         preview.SetActive(true);
         preview.GetComponent<SpriteRenderer>().sprite = item.previewImage;
+    }
+
+    /// <summary>
+    /// Moves a building to a new valid position.
+    /// </summary>
+    public void MoveBuilding(Vector3Int position) {
+        placeable = tilemapManager.GetPlaceableInTopLayer(position);
+        Tile tile = tilemapManager.GetTileInTopLayer(position);
+        tilemapManager.RemoveTile(position);
+        preview.GetComponent<SpriteRenderer>().sprite = tile.sprite;
+        preview.SetActive(true);
+        placing = true;
     }
 
     private void renderBuilding()

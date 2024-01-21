@@ -223,6 +223,13 @@ public class TilemapManager : MonoBehaviour
         return topLayer.GetTile<Tile>(coords);
     }
 
+    public Placeable GetPlaceableInTopLayer(Vector3Int position) {
+        if (tiles.TryGetValue(position, out Placeable placeable)) {
+            return placeable;
+        }
+        return null;
+    }
+
     public TileType GetTileType(Vector3Int position) {
         Placeable placeable;
         if (tiles.TryGetValue(position, out placeable)) {

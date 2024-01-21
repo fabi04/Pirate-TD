@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Tilemaps;
 
 public class ClickManager : MonoBehaviour
 {
@@ -10,11 +7,13 @@ public class ClickManager : MonoBehaviour
     bool shopOpen = false;
 
     private TilemapManager tilemapManager;
+    private BuildingPlacer buildingPlacer;
     private SelectionPanelManager selectionPanelManager;
 
     private void Start() {
         tilemapManager = GetComponent<TilemapManager>();
         selectionPanelManager = GetComponent<SelectionPanelManager>();
+        buildingPlacer = GetComponent<BuildingPlacer>();
     }
 
     public void Update() {
@@ -41,6 +40,16 @@ public class ClickManager : MonoBehaviour
             tilemapManager.DeselectTileWithRange(currentSelect.Value);
             selectionPanelManager.ToggleSelectionPanel(false, tilemapManager.GetTileType(currentSelect.Value));
             currentSelect = null;
+        }
+    }
+
+    /// <summary>
+    /// Called when the user clicked the move button on the current selection.
+    /// </summary>
+    public void MoveClicked() {
+        Debug.Log("Moved clicked");
+        if (currentSelect != null) {
+            buildingPlacer.MoveBuilding(currentSelect.Value);
         }
     }
 }
