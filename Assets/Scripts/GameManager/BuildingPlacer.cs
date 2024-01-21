@@ -22,7 +22,6 @@ public class BuildingPlacer : MonoBehaviour
 
     Vector3Int gridCoords;
 
-    bool moving = false;
        
     void Start()
     {
@@ -54,28 +53,6 @@ public class BuildingPlacer : MonoBehaviour
         }
     }
 
-    public void HandleClick()
-    {
-        // if (buildingPrefab != null)
-        // {
-        //     if (moving)
-        //     {
-        //         if (TilemapManager.instance.IsTileAvailable(new Vector2Int(gridCoords.x, gridCoords.y)))
-        //         {
-        //             ClientSend.RequestMoveBuilding(building.GetPosition(), new Vector2(gridCoords.x, gridCoords.y),
-        //                 (short)buildingPrefab.GetComponent<Placeable>().GetBuildingType()); ;
-        //         }
-        //     } else
-        //     {
-        //         if (TilemapManager.instance.IsTileAvailable(new Vector2Int(gridCoords.x, gridCoords.y)))
-        //         {
-        //             ClientSend.RequestPlaceBuilding(new Vector2(gridCoords.x, gridCoords.y),
-        //                 (int)buildingPrefab.GetComponent<Placeable>().GetBuildingType());
-        //         }
-        //     }
-        // }
-    }
-
     // Callback when shop item was clicked
     public void OnShopItemSelected(PlaceableSO item)
     {
@@ -83,35 +60,6 @@ public class BuildingPlacer : MonoBehaviour
         this.item = item;
         preview.SetActive(true);
         preview.GetComponent<SpriteRenderer>().sprite = item.previewImage;
-    }
-
-    // if a building is to be moved on the game board
-    public void OnMoveClicked(GameObject building)
-    {
-        moving = true;
-     //   tilemapManager.RemoveTile(building);
-      //  buildingPrefab = building;
-      //  this.building = buildingPrefab.GetComponent<Building>();
-        placing = true;
-    }
-
-    public void PlaceBuilding(Vector2Int position, int type, bool isOwn)
-    {
-        // if (isOwn)
-        // {
-        // //    buildingPrefab.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        //     building.SetPosition((Vector2Int)gridCoords);
-        //     building.Select();
-        //     building.OnPlaced();
-        //    // tilemapManager.AddTile(building);
-        //  //   buildingPrefab = null;
-        //     building = null;
-        //     moving = false;
-        // }
-        // else
-        // {
-        //    // LifetimeManager.instance.CreatePlaceable(position, (TileType) type);
-        // }
     }
 
     private void renderBuilding()

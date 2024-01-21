@@ -6,6 +6,9 @@ using UnityEngine.Tilemaps;
 using Unity.VisualScripting;
 using System.Linq;
 
+/// <summary>
+/// Manages the tilemap and all actions that are done with it.
+/// </summary>
 public class TilemapManager : MonoBehaviour
 {
     [SerializeField] Tilemap topLayer;
@@ -15,7 +18,6 @@ public class TilemapManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI text;
 
     private Vector3Int oldMousePosition;
-    private Vector3Int selectionPosition;
     public Tile selectedTile;
     public Tile bottomTile;
     public Tile[] pathTiles;
@@ -193,7 +195,7 @@ public class TilemapManager : MonoBehaviour
         for (int i = position.x - range.x; i < position.x + range.x; i++) {
             for (int j = position.y - range.y; j < position.y + range.y; j++) {
                 Vector3Int pos = new Vector3Int(i, j, 0);
-                if (GetTileInBottomLayer(pos) && pos != position) {
+                if (GetTileInBottomLayer(pos)) {
                     rangeSelectionLayer.SetTile(pos, selectedTile);
                     rangeSelectionLayer.SetColor(pos, new Color(1f, 1f, 1f, 0.5f));
                     selectedRange.Add(pos, true);

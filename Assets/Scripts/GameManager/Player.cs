@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Tilemaps;
-using UnityEngine.EventSystems;
 
+/// <summary>
+/// Models a simple player.
+/// </summary>
 public class Player
 {
     public int id { get; private set; }

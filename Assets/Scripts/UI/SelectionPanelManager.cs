@@ -13,6 +13,12 @@ public class SelectionPanelManager : MonoBehaviour
     [SerializeField] GameObject townhallPanel;
 
     private GameObject curr;
+
+    /// <summary>
+    /// Sets the state of the current selection panel. 
+    /// </summary>
+    /// <param name="state">The state (on or off)</param>
+    /// <param name="type">The corresponding tile's type</param>
     public void ToggleSelectionPanel(bool state, TileType type)
     {
         switch(type)
@@ -25,6 +31,11 @@ public class SelectionPanelManager : MonoBehaviour
             case TileType.STONE:
             {
                 curr = stonePanel;
+                break;
+            }
+            case TileType.LUMBER_HOUSE:
+            {
+                curr = lumberPanel;
                 break;
             }
             //case House:
@@ -52,11 +63,10 @@ public class SelectionPanelManager : MonoBehaviour
                 return;
             }
         }
-        //placeable.ProcessPanel(curr);
         AnimateBuildingSelect(state);
     }
 
-    public void AnimateBuildingSelect(bool state)
+    private void AnimateBuildingSelect(bool state)
     {
         if(curr != null)
         {

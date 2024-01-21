@@ -8,6 +8,9 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] public GameObject shopPanel;
 
 
+    /// <summary>
+    /// Animate the opening and closing of the shop.
+    /// </summary>
     public void OnShopClicked()
     {
         FindObjectOfType<ClickManager>().Deselect();

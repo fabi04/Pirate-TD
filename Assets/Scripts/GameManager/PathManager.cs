@@ -4,6 +4,9 @@ using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Manages the retrieval of correct path tiles.
+/// </summary>
 public class PathManager : MonoBehaviour {
     public List<Tile> pathTiles;
 

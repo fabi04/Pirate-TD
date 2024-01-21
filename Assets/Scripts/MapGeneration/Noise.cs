@@ -2,6 +2,15 @@ using UnityEngine;
 using System.Collections;
 
 public class Noise {
+
+	/// <summary>
+	/// Generates a noise map using the given parameters.
+	/// </summary>
+	/// <param name="mapWidth"> The map's width</param>
+	/// <param name="mapHeight"> The map's height</param>
+	/// <param name="seed"> The random seed</param>
+	/// <param name="scale"> Scale value to scale the noise</param>
+	/// <returns>An array containing the noise map.</returns>
     public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset) {
 		float[,] noiseMap = new float[mapWidth,mapHeight];
 
@@ -63,7 +72,8 @@ public class Noise {
 		return noiseMap;
 	}
 
-    public static float[] GenerateFalloff(int width, int length, float a, float b)
+
+    private static float[] GenerateFalloff(int width, int length, float a, float b)
 	{
 		float[] map = new float[width * length];
 

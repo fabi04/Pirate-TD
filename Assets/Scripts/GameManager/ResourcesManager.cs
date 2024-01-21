@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Security.Cryptography;
 
+/// <summary>
+/// Manages the resources.
+/// </summary>
 public class ResourcesManager : MonoBehaviour
 {
     [SerializeField] float interPolationScale = 0.025f;
@@ -26,12 +28,20 @@ public class ResourcesManager : MonoBehaviour
     private Dictionary<Resources, int> resources;
 
     private void Start() {
-        resources = new Dictionary<Resources, int>();
-        resources.Add(Resources.STONE, stone);
-        resources.Add(Resources.WOOD, wood);
-        resources.Add(Resources.POPULATION, population);
+        resources = new Dictionary<Resources, int>
+        {
+            { Resources.STONE, stone },
+            { Resources.WOOD, wood },
+            { Resources.POPULATION, population }
+        };
     }
 
+    /// <summary>
+    /// Checks whether the player can afford the given amount of resources.
+    /// </summary>
+    /// <param name="resource">The resource type</param>
+    /// <param name="amount">The amount the player wants to use</param>
+    /// <returns></returns>
     public bool CanAfford(Resources resource, int amount)
     {
         if (resources == null) return false;
@@ -44,6 +54,11 @@ public class ResourcesManager : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Deducts the resources and their costs from the player's amount,
+    /// </summary>
+    /// <param name="resources">The resource types the costs map to</param>
+    /// <param name="cost">The amounts of each resource</param>
     public void DeductResources(List<Resources> resources, List<int> cost) {
         if (resources.Count != cost.Count) return;
         Dictionary<Resources, int> combined = new Dictionary<Resources, int>();
@@ -53,17 +68,16 @@ public class ResourcesManager : MonoBehaviour
         DeductResources(combined);
     }
 
+    /// <summary>
+    /// Deducts the resources and their costs from the player's amount,
+    /// </summary>
+    /// <param name="amount">The Dictionary containing the resource and amount pairs</param>
     public void DeductResources(Dictionary<Resources, int> amount) {
         foreach (KeyValuePair<Resources, int> resource in amount) {
             if (CanAfford(resource.Key, resource.Value)) {
                 resources[resource.Key] -= resource.Value;
             }
         }
-    }
-
-    public void SetResources(Dictionary<Resources, int> resources)
-    {
-        this.resources = resources;
     }
 
     private void Update()

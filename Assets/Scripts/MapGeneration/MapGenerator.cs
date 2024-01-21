@@ -66,19 +66,4 @@ public class MapGenerator : MonoBehaviour {
 		}
         tilemapManager.AddTile(new Vector3Int(0, 0, 0),pathTile, TileType.PATH);
 	}
-
-	void OnValidate() {
-		if (mapWidth < 1) {
-			mapWidth = 1;
-		}
-		if (mapHeight < 1) {
-			mapHeight = 1;
-		}
-		if (lacunarity < 1) {
-			lacunarity = 1;
-		}
-		if (octaves < 0) {
-			octaves = 0;
-		}
-	}
 }

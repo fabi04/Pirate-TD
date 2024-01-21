@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Resources;
+
+/// <summary>
+/// A single shop item and its UI. 
+/// </summary>
 public class UIItem : MonoBehaviour
 {
     public PlaceableSO item;
@@ -22,7 +25,11 @@ public class UIItem : MonoBehaviour
         Refresh();
     }
 
-    public void UpdateItem(PlaceableSO item)
+    /// <summary>
+    /// Initialises the slot using the given item. 
+    /// </summary>
+    /// <param name="item">The item to initialise the slof from.</param>
+    public void InitialiseItem(PlaceableSO item)
     {
         this.item = item;
         if(this.item != null)
@@ -39,6 +46,9 @@ public class UIItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Refresh the data shown by this item.
+    /// </summary>
     public void Refresh()
     {
         if(item == null) return;
