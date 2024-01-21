@@ -1,0 +1,4 @@
+repository "PirateTd@unity_3kN6RedeVwCeHg@cloud"
+  path "/"
+    smartbranch "/main/def/resources-map"               
+     

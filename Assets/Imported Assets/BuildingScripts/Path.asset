@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8368862baa3cb8349b9233e23365484d, type: 3}
+  m_Name: Path
+  m_EditorClassIdentifier: 
+  id: 2
+  title: Path
+  description: Extends your path so you can place more buildings.
+  previewImage: {fileID: 1530952451, guid: 51dad5206bc904fd7bb9a65dca1a3b7f, type: 3}
+  tile: {fileID: 11400000, guid: d53db791c774949d3bffe63d0c78422f, type: 2}
+  type: 6
+  hitpoints: 100
+  resources: 01000000
+  cost: 05000000

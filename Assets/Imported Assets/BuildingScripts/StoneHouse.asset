@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8368862baa3cb8349b9233e23365484d, type: 3}
+  m_Name: StoneHouse
+  m_EditorClassIdentifier: 
+  id: 1
+  title: Stonehouse
+  description: Enables you to farm and store stone.
+  previewImage: {fileID: 21300000, guid: 342c26512afa3450eb8c1bf4a3032d3e, type: 3}
+  tile: {fileID: 0}
+  type: 7
+  hitpoints: 100
+  resources: 00000000
+  cost: 50000000
