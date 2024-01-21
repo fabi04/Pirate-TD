@@ -161,7 +161,11 @@ public class TilemapManager : MonoBehaviour
     public void DeselectTileWithRange(Vector3Int position)
     {
         DeselectTile(position);
-         if (selectedRange.Count > 0) {
+        DeselectRange();
+    }
+
+    public void DeselectRange() {
+        if (selectedRange.Count > 0) {
             foreach(KeyValuePair<Vector3Int, bool> pos in selectedRange) {
                 rangeSelectionLayer.SetTile(pos.Key, null);
             }
@@ -191,7 +195,7 @@ public class TilemapManager : MonoBehaviour
     /// Select a range from the given position and the given range.
     /// </summary>
     public void SelectRange(Vector3Int position, Vector2Int range) {
-        DeselectTileWithRange(position);
+        DeselectRange();
         for (int i = position.x - range.x; i < position.x + range.x; i++) {
             for (int j = position.y - range.y; j < position.y + range.y; j++) {
                 Vector3Int pos = new Vector3Int(i, j, 0);
