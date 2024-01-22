@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Preview](https://github.com/fabi04/GameEngine/blob/master/preview.png)
+![Preview](https://github.com/fabi04/Pirate-TD/blob/main/preview.png)
 
 Pirate TD is a strategic tower defense game, where specialised buildings can be placed to farm resources and defend against enemies. 
 
